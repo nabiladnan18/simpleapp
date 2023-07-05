@@ -5,7 +5,7 @@
 </head>
 <body>
     {% if name %}
-    <h1>Hello to my homepage, {{ name }}</h1>
+    <h1>Hello to my homepage, {{ name.title() }}</h1>
     {% else %}
     <h1>Hello to my homepage</h1>
     {% endif %}    

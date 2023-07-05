@@ -163,3 +163,5 @@ cython_debug/
 
 # VS Code settings
 .vscode
+settings.json
+launch.json

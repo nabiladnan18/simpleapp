@@ -1,9 +1,6 @@
-from flask import Flask, render_template, session, redirect, url_for
-from dotenv import load_dotenv
-import os
+from flask import Flask, render_template
 
 app = Flask(__name__, template_folder="./templates", static_folder="./static")
-load_dotenv(".env")
 
 @app.route('/')
 @app.route('/<name>')

@@ -1,0 +1,9 @@
+{% extends './base.html' %}
+
+{% block customname %}
+<form action='{{ url_for("user", name="") }}' method='POST'>
+    <p>Name: </p>
+    <p><input type='text' name='name'/></p>
+    <p><input type='submit' name='submit'></p>
+</form>
+{% endblock customname %}

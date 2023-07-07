@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Counter App</title>
+    <title>Hello World!</title>
 </head>
 <body>
     {% if name %}
     <h1>Hello to my homepage, {{ name.title() }}</h1>
     {% else %}
     <h1>Hello to my homepage</h1>
-    {% endif %}    
+    {% block customname %}{% endblock customname %}
+    {% endif %}
+    
+    {% block return_home %}{% endblock return_home %}
 </body>
 </html>

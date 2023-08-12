@@ -12,10 +12,14 @@ def test_home(client):
     assert response.status_code == 200
     assert b'Hello to my homepage' in response.data
 
-def test_custom_name(client):
-    response = client.get('/custom', data={'name':'dustin'})
-    assert response.status_code == 200
-    assert b'Hello to my homepage, Dustin' in response.data
 
-if __name__ == ("_main_"):
-    pytest.main()
+def test_random_name(client):
+    response = client.get('/brenda')
+    assert response.status_code == 200 
+    assert b'Brenda' in response.data
+
+
+# def test_custom_name(client):
+#     response = client.post('/custom', data={'name':'brenda'})
+#     assert response.status_code == 200 
+#     assert b'Brenda' in response.data

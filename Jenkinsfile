@@ -2,15 +2,17 @@ pipeline {
     agent any
 
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //         checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nabiladnan18/simpleapp.git']])
-        //     }
-        // }
+        stage('Checkout') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nabiladnan18/simpleapp.git']])
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building the application...'
+                echo 'Installing dependencies...'
                 sh 'python3 -m pip install -r requirements.txt'
+                echo 'Installed dependencies'
                 echo 'Building complete'
             }
         }

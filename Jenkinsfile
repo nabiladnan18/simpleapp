@@ -9,13 +9,19 @@ pipeline {
         // }
         stage('Build') {
             steps {
+                echo 'Building the application...'
                 sh 'python3 -m pip install -r requirements.txt'
+                echo 'Building complete'
             }
         }
         stage('Test') {
             steps {
+                echo 'Testing the application...'
                 sh 'python3 -m pytest test_main.py'
             }
+        }
+        stage('Deploy') {
+            echo 'Deploying the application now'
         }
     }
 }

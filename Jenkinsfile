@@ -9,7 +9,6 @@ pipeline {
         // }
         stage('Build') {
             steps {
-                git branch: 'main', url: 'https://github.com/nabiladnan18/simpleapp'
                 sh 'python3 -m pip install -r requirements.txt'
             }
         }

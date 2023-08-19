@@ -1,42 +1,22 @@
 pipeline {
     agent any
+
     stages {
+        stage('Checkout') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nabiladnan18/simpleapp.git']])
+            }
+        }
         stage('Build') {
-            parallel {
-                stage('Build') {
-                    steps {
-                        sh 'echo "Building repo'
-                    }
-                }
+            steps {
+                git branch: 'main', url: 'https://github.com/nabiladnan18/simpleapp'
+                sh 'python3 -m pip install -r requirements.txt'
             }
         }
         stage('Test') {
             steps {
-                sh 'python3 -m pytest test_main.py'       
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'echo Deploying the application'
-                sh 'export $(cat .env | xargs) && flask run'
+                sh 'python3 -m pytest test_main.py'
             }
         }
     }
-
-    post {
-		always {
-			echo 'The pipeline completed'
-			junit allowEmptyResults: true, testResults:'/home/nadnan/myProjects/test_reports/*.xml'
-		}
-		success {				
-			echo "Flask application up and running!!"
-		}
-		failure {
-			echo 'Build stage failed'
-			error('Stopping early…')
-		}
-	}
 }
-
-
-

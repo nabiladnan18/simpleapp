@@ -21,9 +21,5 @@ def user(name):
     return render_template('base.html', name=name)
 
 
-@app.route('/whoa', methods=['GET','POST'])
-def testing_pipeline():
-    pass
-
 if __name__ == '__main__':
     app.run()
